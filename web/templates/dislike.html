@@ -1,0 +1,31 @@
+{% extends "base/base.html" %}
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dislike.css') }}" type="text/css" />
+{% endblock %}
+
+{% block js %} {% endblock %}
+
+{% block content %}
+<div class="wrapper">
+	<h1>Olá {{ current_user.name }}</h1>
+	{% if playlists %}
+    <h1>Agora escolha abaixo uma playlist que você não curta!</h1>
+
+	<div class="cards">
+		{% for playlist in playlists %}
+			<div class="card">
+			<div class="overlayer" onclick="window.location.href='/dislike?sid={{playlist.spotify_id}}'">
+				<i class="far fa-thumbs-down" style="font-size: 80px;margin-top: 40px;color: white;"></i>
+			</div>
+			<img src="{{playlist.image}}" alt="{{playlist.name}} image">
+			<div class="title">
+				<a href="#">{{playlist.name}}</a>
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+
+	{% endif %}
+</div>
+{% endblock %}
+

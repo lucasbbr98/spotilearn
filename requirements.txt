@@ -1,7 +1,0 @@
-spotipy
-sklearn
-seaborn
-pandas
-numpy
-matplotlib
-openpyxl

@@ -1,0 +1,80 @@
+{% extends "base/base.html" %}
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}" type="text/css" />
+{% endblock %}
+
+{% block js %}<script type="text/javascript" src="{{ url_for('static', filename='js/index.js') }}"></script>{% endblock %}
+
+{% block content %}
+  <section class="noselect" id="main-landing" style="background-image: url({{ url_for('static', filename='img/landing.png') }});">
+    <div id="black-ov"></div>
+    <div class="holder" style="position:relative; z-index:1001;">
+  <span style="font-weight:bold;color:white;font-size:40px;">Spotilearn</span>
+  <div class="clr"></div>
+  <div class="bar b1"></div>
+  <div class="bar b2"></div>
+  <div class="bar b3"></div>
+  <div class="bar b4"></div>
+  <div class="bar b5"></div>
+  <div class="bar b6"></div>
+  <div class="bar b7"></div>
+  <div class="bar b8"></div>
+  <div class="bar b9"></div>
+</div>
+    <header>
+      <div id="brand">
+      </div>
+      <nav>
+        <a class="button" href="/login">Acessar</a>
+      </nav>
+    </header>
+
+    <div id="main-landing-message">
+      <h1>Um novo algoritmo.</h1>
+      <h2>Descubra músicas em 4 passos.</h2>
+      <a class="button" href="/login">Conheça já</a>
+    </div>
+  </section>
+
+  <!-- SECTION OPTIONS SELECTOR -->
+  <section class="noselect" id="option-select">
+    <div id="option-select-clickable-options">
+      <div class="option">
+          <p>Inovador</p>
+      </div>
+      <div class="option">
+          <p>Acessível</p>
+      </div>
+      <div class="option">
+          <p>Gratuito</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="noselect" id="option-select-view">
+    <div class="view-option">
+      <div>
+          <h1>O seu sistema de recomendações. <br> Fácil. Personalizado. </h1>
+          <h1></h1>
+        <a class="button" href="/login">VENHA  NOS  CONHECER</a>
+      </div>
+      <div>
+          <img width="250" style="margin-left:60px;" src="{{ url_for('static', filename='img/learning.png') }}" alt="Learning">
+      </div>
+    </div>
+
+    <div class="view-option">
+      <div>
+        <h1>Crie novas playlists de músicas de qualquer lugar.</h1>
+        <a class="button" href="/login">VENHA  NOS  CONHECER</a>
+      </div>
+    </div>
+
+    <div class="view-option">
+      <div>
+        <h1>Gratuito, basta ter uma conta no Spotify.</h1>
+        <a class="button" href="/login">VENHA  NOS  CONHECER</a>
+      </div>
+    </div>
+  </section>
+{% endblock %}

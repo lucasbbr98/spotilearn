@@ -1,0 +1,325 @@
+/* GLOBAL STYLES */
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+
+.brand-title{
+font-weight:bold;
+color:white;
+font-size:40px;
+}
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+}
+
+img {
+  display: block;
+}
+h1, h2, p {
+  margin: 0;
+
+}
+a {
+  display: block;
+}
+.button {
+  background-color: #1ed760;
+  text-decoration: none;
+  color: #FFF;
+  font-weight: 300;
+  padding: 8px 18px;
+  border-radius: 3px;
+  box-sizing: border-box;
+}
+.option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 91px;
+  width: 460px;
+  color: #FFF;
+  padding: 40px 0;
+  opacity: 0.5;
+  cursor: pointer;
+}
+.option:hover {
+  opacity: 1;
+}
+
+a:hover{
+    color:white;
+    text-decoration:none;
+}
+
+.option svg {
+  margin-bottom: 5px;
+  fill: #FFF;
+}
+.option p {
+  font-weight: 600;
+}
+/* ================= */
+/* SECTION MAIN LANDING */
+#main-landing {
+  padding: 20px 40px;
+  position: relative;
+}
+
+#main-landing > header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 1000;
+}
+/* HEADER */
+/* logo */
+#brand svg {
+  width: 180px;
+  height: auto;
+}
+
+/* MAIN LANDING MESSAGE */
+/* black gradient overlay */
+#black-ov {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(to right,#000000de, #00000029);
+  left: 0;
+  top: 0;
+}
+#main-landing-message {
+  position: relative;
+  padding: 18em 0;
+}
+#main-landing-message h1, h2 {
+  color: #FFF;
+}
+#main-landing-message > h1 {
+  font-size: 6em;
+  margin-bottom: 15px;;
+}
+#main-landing-message > h2 {
+  font-weight: 300;
+  margin-bottom: 1em;
+}
+#main-landing-message > a {
+  display: inline-block;
+  font-size: 15px;
+  padding: 12px 26px;
+  letter-spacing: 1px;
+}
+#option-select-view {
+  background: #000;
+}
+/* SELECT OPTIONS */
+#option-select-clickable-options {
+  background-color: #141414;
+  display: flex;
+  justify-content: space-around;
+  padding: 0 10em;
+  border-bottom: 2px solid #2d2d2d;
+}
+
+/* VIEW OPTIONS */
+.view-option {
+  padding: 3em 14em;
+}
+.view-option > div > a {
+  display: inline-block;
+  font-size: 15px;
+  padding: 12px 26px;
+  letter-spacing: 1px;
+}
+.view-option:nth-child(1) {
+  display: flex;
+  justify-content: center;
+}
+.view-option a {
+  padding: 16px 30px !important;
+  min-width: 268.5px;
+  min-height: 49px;
+  max-height: 49px;
+}
+.view-option:nth-child(1) > div:nth-child(1) {
+  margin-top: 4em;
+}
+.view-option > div > h1 {
+  color: #FFF;
+  font-weight: 300;
+}
+.view-option:nth-child(1) > div > h1 {
+  margin-bottom: 20px;
+  font-size: 2em;
+}
+.view-option:nth-child(2) {
+  flex-direction: column;
+}
+
+.view-option:nth-child(2) > div:nth-child(1) {
+  display: flex;
+  justify-content: space-between;
+}
+.view-option:nth-child(2) > div:nth-child(2) > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #FFF;
+  margin: 20px;
+}
+.view-option:nth-child(2) > div:nth-child(2) > div p {
+  opacity: 0.6;
+  font-weight: 300;
+  text-align: center;
+}
+.view-option:nth-child(2) > div:nth-child(2) > div h1 {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+  text-align: center;
+}
+.view-option:nth-child(2) > div:nth-child(2){
+  display: flex;
+}
+.view-option:nth-child(2) > div:nth-child(2) img{
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.view-option:nth-child(3) {
+  flex-direction: column;
+}
+.view-option:nth-child(3) > div:nth-child(1) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.view-option:nth-child(3) > div:nth-child(1) h1 {
+  margin-right: 40px;
+}
+
+.view-option:nth-child(3) > div:nth-child(1) h1 {
+  margin-right: 40px;
+}
+
+.view-option:nth-child(3) table {
+  color: #FFF;
+}
+/* .view-option:nth-child(2) > div > h1 {
+  margin-bottom: 20px;
+  font-size: 2.4em;
+} */
+
+.holder span{
+  margin-left: -5px;
+  font: 500 14px 'verdana';
+}
+.clr{
+  clear: both;
+}
+.bar{
+  width: 20px;
+  height: 2px;
+  background: #60b044;
+  margin: 2px;
+  float: left;
+}
+.b1{
+  -webkit-animation: anim1 500ms linear infinite;
+}
+@-webkit-keyframes anim1{
+  0%  {height: 10px;}
+  25% {height: 30px;}
+  50% {height: 10px;}
+  75% {height: 25px;}
+  100%{height: 10px;}
+}
+.b2{
+  -webkit-animation: anim2 750ms linear infinite;
+}
+@-webkit-keyframes anim2{
+  0%  {height: 30px;}
+  25% {height: 10px;}
+  50% {height: 40px;}
+  75% {height: 25px;}
+  100%{height: 30px;}
+}
+.b3{
+  -webkit-animation: anim3 750ms linear infinite;
+}
+@-webkit-keyframes anim3{
+  0%  {height: 10px;}
+  25% {height: 25px;}
+  50% {height: 10px;}
+  75% {height: 40px;}
+  100%{height: 10px;}
+}
+.b4{
+  -webkit-animation: anim4 650ms linear infinite;
+}
+@-webkit-keyframes anim4{
+  0%  {height: 40px;}
+  25% {height: 10px;}
+  50% {height: 35px;}
+  75% {height: 15px;}
+  100%{height: 40px;}
+}
+.b5{
+  -webkit-animation: anim5 750ms linear infinite;
+}
+@-webkit-keyframes anim5{
+  0%  {height: 15px;}
+  25% {height: 25px;}
+  50% {height: 10px;}
+  75% {height: 40px;}
+  100%{height: 15px;}
+}
+.b6{
+  -webkit-animation: anim6 700ms linear infinite;
+}
+@-webkit-keyframes anim6{
+  0%  {height: 30px;}
+  25% {height: 10px;}
+  50% {height: 30px;}
+  75% {height: 20px;}
+  100%{height: 30px;}
+}
+.b7{
+  -webkit-animation: anim7 750ms linear infinite;
+}
+@-webkit-keyframes anim7{
+  0%  {height: 0px;}
+  25% {height: 30px;}
+  50% {height: 15px;}
+  75% {height: 20px;}
+  100%{height: 00px;}
+}
+.b8{
+  -webkit-animation: anim8 650ms linear infinite;
+}
+@-webkit-keyframes anim8{
+  0%  {height: 0px;}
+  25% {height: 20px;}
+  50% {height: 10px;}
+  75% {height: 30px;}
+  100%{height: 0px;}
+}
+.b9{
+  -webkit-animation: anim9 550ms linear infinite;
+}
+@-webkit-keyframes anim9{
+  0%  {height: 10px;}
+  25% {height: 30px;}
+  50% {height: 0px;}
+  75% {height: 15px;}
+  100%{height: 10px;}
+}

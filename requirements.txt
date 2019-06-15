@@ -1,0 +1,12 @@
+flask
+flask_sqlalchemy
+flask_login
+flask_socketio
+numpy
+pandas
+sklearn
+requests
+matplotlib
+xlrd
+openpyxl
+scikit-plot

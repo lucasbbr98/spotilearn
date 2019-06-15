@@ -2,10 +2,12 @@ import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.metrics import  mean_squared_error
 from sklearn.metrics import roc_curve, auc
+from numba import jitclass, void, int_, double, jit, int32, float32
 
 #LEGAL 1
 #https://blog.zhaytam.com/2018/08/15/implement-neural-network-backpropagation/
 #https://machinelearningmastery.com/implement-backpropagation-algorithm-scratch-python/
+
 
 class FeedForwardSigmoidNeuralNetwork:
     def __init__(self, n_inputs, hidden_sizes=[2, 3]):
@@ -17,12 +19,14 @@ class FeedForwardSigmoidNeuralNetwork:
 
         self.W = {}
         self.B = {}
+        self.loss = []
         for i in range(self.nh + 1):
             self.W[i + 1] = np.random.randn(self.sizes[i], self.sizes[i + 1])
-            self.B[i + 1] = np.zeros((1, self.sizes[i + 1]))
+            self.B[i + 1] = np.ones((1, self.sizes[i + 1]))
 
     def sigmoid(self, x):
         return 1.0 / (1.0 + np.exp(-x))
+
 
     def forward_pass(self, x):
         self.A = {}
@@ -35,6 +39,7 @@ class FeedForwardSigmoidNeuralNetwork:
 
     def grad_sigmoid(self, x):
         return x * (1 - x)
+
 
     def grad(self, x, y):
         self.forward_pass(x)
@@ -50,6 +55,7 @@ class FeedForwardSigmoidNeuralNetwork:
             self.dH[k - 1] = np.matmul(self.dA[k], self.W[k].T)
             self.dA[k - 1] = np.multiply(self.dH[k - 1], self.grad_sigmoid(self.H[k - 1]))
 
+
     def fit(self, X, Y, epochs=1, learning_rate=1, initialise=True, display_loss=False):
 
         # initialise w, b
@@ -58,8 +64,8 @@ class FeedForwardSigmoidNeuralNetwork:
                 self.W[i + 1] = np.random.randn(self.sizes[i], self.sizes[i + 1])
                 self.B[i + 1] = np.zeros((1, self.sizes[i + 1]))
 
-        if display_loss:
-            loss = {}
+
+        loss = {}
 
         for e in range(epochs):
             dW = {}
@@ -78,12 +84,12 @@ class FeedForwardSigmoidNeuralNetwork:
                 self.W[i + 1] -= learning_rate * dW[i + 1] / m
                 self.B[i + 1] -= learning_rate * dB[i + 1] / m
 
-            if display_loss:
-                Y_pred = self.predict(X)
-                loss[e] = mean_squared_error(Y_pred, Y)
+            Y_pred = self.predict(X)
+            loss[e] = mean_squared_error(Y_pred, Y)
 
+        self.loss = list(loss.values())
         if display_loss:
-            plt.plot(loss.values())
+            plt.plot(list(loss.values()))
             plt.xlabel('Epochs')
             plt.ylabel('Mean Squared Error')
             plt.show()

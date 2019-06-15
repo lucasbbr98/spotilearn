@@ -1,11 +1,7 @@
 import pandas as pd
-import numpy as np
 from models.ml.perceptron import Perceptron
 from sklearn.linear_model import Perceptron as SKPerceptron
-from api.static.preprocessing import add_ones, standard_features, train_test_split
-from sklearn.metrics import roc_curve
-from sklearn.model_selection import train_test_split
-from sklearn.utils import shuffle
+from api.static.preprocessing import standard_features, train_test_split
 
 
 if __name__ == '__main__':

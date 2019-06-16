@@ -16,8 +16,8 @@ y_data = df.iloc[:, 13].to_numpy()
 x_data = standard_features(x=x_data)
 x_train, x_test, y_train, y_test = train_test_split(x_data, y_data)
 n_inputs = x_train.shape[1]
-ffn = FeedForwardSigmoidNeuralNetwork(n_inputs=9, hidden_sizes=[22])
-ffn.fit(x_train, y_train, epochs=200, learning_rate=.01, display_loss=True)
+ffn = FeedForwardSigmoidNeuralNetwork(n_inputs=9, hidden_sizes=[12])
+ffn.fit(x_train, y_train, x_test, y_test, epochs=600, learning_rate=.01, display_loss=True, display_accuracy=True)
 y_pred_train = ffn.predict(x_train)
 y_pred_binarised_train = (y_pred_train >= 0.5).astype("int").ravel()
 y_pred_val = ffn.predict(x_test)
@@ -27,8 +27,8 @@ accuracy_val = accuracy_score(y_pred_binarised_val, y_test)
 
 ffn.plot_roc(y_test= y_test, y_pred=y_pred_binarised_val)
 #model performance
-print("Training accuracy", round(accuracy_train, 2))
-print("Validation accuracy", round(accuracy_val, 2))
+print("Training accuracy", round(accuracy_train, 4))
+print("Validation accuracy", round(accuracy_val, 4))
 
 
 def test_hidden_layers_1():

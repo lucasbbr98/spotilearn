@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.metrics import  mean_squared_error
 from sklearn.metrics import roc_curve, auc
-from numba import jitclass, void, int_, double, jit, int32, float32
+from sklearn.metrics import accuracy_score
 
 #LEGAL 1
 #https://blog.zhaytam.com/2018/08/15/implement-neural-network-backpropagation/
@@ -56,7 +56,7 @@ class FeedForwardSigmoidNeuralNetwork:
             self.dA[k - 1] = np.multiply(self.dH[k - 1], self.grad_sigmoid(self.H[k - 1]))
 
 
-    def fit(self, X, Y, epochs=1, learning_rate=1, initialise=True, display_loss=False):
+    def fit(self, X, Y, x_test, y_test, epochs=1, learning_rate=1, initialise=True, display_loss=False, display_accuracy=False):
 
         # initialise w, b
         if initialise:
@@ -64,9 +64,9 @@ class FeedForwardSigmoidNeuralNetwork:
                 self.W[i + 1] = np.random.randn(self.sizes[i], self.sizes[i + 1])
                 self.B[i + 1] = np.zeros((1, self.sizes[i + 1]))
 
-
         loss = {}
-
+        accuracy_trains=[]
+        accuracy_tests=[]
         for e in range(epochs):
             dW = {}
             dB = {}
@@ -86,6 +86,12 @@ class FeedForwardSigmoidNeuralNetwork:
 
             Y_pred = self.predict(X)
             loss[e] = mean_squared_error(Y_pred, Y)
+            y_pred_train = self.predict(X)
+            y_pred_binarised_train = (y_pred_train >= 0.5).astype("int").ravel()
+            y_pred_val = self.predict(x_test)
+            y_pred_binarised_val = (y_pred_val >= 0.5).astype("int").ravel()
+            accuracy_trains.append(accuracy_score(y_pred_binarised_train, Y))
+            accuracy_tests.append(accuracy_score(y_pred_binarised_val, y_test))
 
         self.loss = list(loss.values())
         if display_loss:
@@ -93,6 +99,16 @@ class FeedForwardSigmoidNeuralNetwork:
             plt.xlabel('Epochs')
             plt.ylabel('Mean Squared Error')
             plt.show()
+
+        if display_accuracy:
+            plt.plot(accuracy_trains, 'r', label='train')
+            plt.plot(accuracy_tests, 'g', label='test')
+            plt.title('Train and Test Accuracies by Epoch')
+            plt.xlabel('Epoch')
+            plt.ylabel('Accuracy')
+            plt.legend(loc='upper left')
+            plt.show()
+
 
     def predict(self, X):
         Y_pred = []
@@ -103,9 +119,12 @@ class FeedForwardSigmoidNeuralNetwork:
 
     def plot_roc(self, y_test, y_pred, show=True):
         plt.subplots(figsize=(10, 6))
-        plt.plot([0, 1], [0, 1], color='navy', linestyle='--', label='diagonal')
+        plt.title('Receiver Operating Characteristic')
+        plt.plot([0, 1], [0, 1], color='red', linestyle='--', label='diagonal')
         fpr, tpr, thresh = roc_curve(y_test, y_pred)
         roc_auc = auc(fpr, tpr)
-        plt.plot(fpr, tpr, label="ROC Curve, auc=" + str(roc_auc))
+        plt.ylabel('True Positive Rate')
+        plt.xlabel('False Positive Rate')
+        plt.plot(fpr, tpr, 'b', label="ROC Curve, auc=" + str(roc_auc))
         if show:
             plt.show()
